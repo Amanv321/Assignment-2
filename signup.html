@@ -244,7 +244,7 @@
                         <a href="" style="cursor: not-allowed">
                             <li>Log In</li>
                         </a>
-                        <a href="">
+                        <a href="index.html">
                             <li id="btn"> Back</li>
                         </a>
                     </ul>
@@ -260,19 +260,20 @@
                     <div class="user-details">
                         <div class="input-box">
                             <span class="details">Name : </span>
-                            <input type="text" class="fname" placeholder="Enter Your Name" name="fname"  autofocus
-                                autocomplete="off" onkeypress="valid()">
+                            <input type="text" class="fname" placeholder="Enter Your Name" name="fname" autofocus
+                                autocomplete="off">
                             <span id="nameError" class="error">*</span>
                         </div>
                         <div class="input-box">
                             <span class="details">User Name : </span>
-                            <input type="text" class="name" placeholder="Enter Your User name" id="username">
+                            <input type="text" class="name" placeholder="Enter Your User name" id="username"
+                                onkeyup="checkusername()">
                             <span id="userError" class="error">*</span>
 
                         </div>
                         <div class="input-box">
                             <span for="Phone Number">Age</span>
-                            <input type="number" name="age" id="age" maxlength="2" placeholder="">
+                            <input type="number" name="age" id="age" maxlength="2" placeholder="" required>
                             <span id="ageError" class="error">*</span>
                         </div>
                         <div class="input-box">
@@ -281,7 +282,8 @@
 
                         </div>
                         <div class="input-box"><span class="details">Email : </span>
-                            <input type="email" class="name" placeholder="Enter Your Email">
+                            <input type="email" class="name" placeholder="Enter Your Email" id="email"
+                                onkeyup=" return checkmail()">
                             <span id="emailError" class="error">*</span>
                         </div>
                         <div class="input-box">
@@ -352,7 +354,6 @@
     </div>
     <script>
         setInterval(setColor, 5000);
-
         function setColor() {
             let x = document.body;
             x.style.background = "linear-gradient(to top right, #33cccc 0%, #3366ff 70%)";
@@ -366,14 +367,21 @@
                 return false;
             }
         }
-        valid = () =>{
+
+        // to validate username
+        checkusername = () => {
             let element = document.getElementById('username').value;
-            let reg=/^[0-9a-zA-Z]+$/;
-            if(!element.match(reg)){
-                document.getElementById('userError').innerText = "Must contain Special character "
+            let reg = /^[a-zA-Z0-9@_//-//$+]{5,15}$/;
+            if (element == "") {
+                document.getElementById('userError').innerText = "Cannot be left empty";
             }
-            else{
-                document.getElementById('userError').innerText = "User Name Valid";
+            else {
+                if (!element.match(reg)) {
+                    document.getElementById('userError').innerText = "Must contain Special character ";
+                }
+                else {
+                    document.getElementById('userError').innerText = "User Name Valid";
+                }
             }
         };
 
@@ -394,10 +402,24 @@
             }
         };
         //  to validate email
-        checkPsswd = () => {
-
-            let mail = document.forms["user"]["email"].value;
+        checkmail = () => {
+            let mail = document.getElementById('email').value;
+            let reg = /^[a-zA-Z0-9._]{5,}@[a-zA-Z.]{5,}[.]{1}[a-zA-Z]{2,6}$/;
+            if (mail == "") {
+                document.getElementById('emailError').innerHTML = "Cannot Be Left Empty";
+            }
+            else {
+                if (!mail.match(reg)) {
+                    document.getElementById('emailError').innerHTML = "Invalid Email Id";
+                }
+                else {
+                    document.getElementById('emailError').innerHTML = "Email Id Accepted";
+                }
+            }
         };
+
+         
+        
 
     </script>
 </body>
