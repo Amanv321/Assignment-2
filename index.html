@@ -39,7 +39,7 @@
             </div>
             <div class="rightsection">
                 <div class="sub-menu">
-                    <a href="signup.html" onclick="loginMsg()">
+                    <a  onclick="loginMsg()" href="#">
                         <li> Log in</li>
                     </a>
                         <button>Sign up</button>
@@ -174,13 +174,14 @@
             <i class="fa fa-linkedin-square" aria-hidden="true"></i>
         </a>
     </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         msg = () => {
-            alert("Log in to access Content");
+            swal("Alert", "Login to Access Contern!", "error");
         };
 
         loginMsg = () => {
-            alert("You need to Register first!!");
+            swal("You need to login First!");
         };
     </script>
 </body>

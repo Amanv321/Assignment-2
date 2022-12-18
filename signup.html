@@ -380,7 +380,12 @@
                     document.getElementById('userError').innerText = "Must contain Special character ";
                 }
                 else {
-                    document.getElementById('userError').innerText = "User Name Valid";
+                    setTimeout(() => {
+                        document.getElementById('userError').innerText = "User Name Valid";
+                    }, 200);
+                    setTimeout(() => {
+                        document.getElementById('userError').innerText = "*";
+                    }, 1000);
                 }
             }
         };
@@ -397,7 +402,13 @@
                     document.getElementById('paswdError').innerHTML = "Password Cannot be Accepted";
                 }
                 else {
-                    document.getElementById('paswdError').innerHTML = "Password Accepted";
+                    setTimeout(() => {
+                        document.getElementById('paswdError').innerHTML = "Password Accepted";
+                    }, 100);
+                    setTimeout(() => {
+                        document.getElementById('paswdError').innerHTML = "*";
+                    }, 1000);
+
                 }
             }
         };
@@ -413,13 +424,18 @@
                     document.getElementById('emailError').innerHTML = "Invalid Email Id";
                 }
                 else {
-                    document.getElementById('emailError').innerHTML = "Email Id Accepted";
+                    setTimeout(() => {
+                        document.getElementById('emailError').innerHTML = "Email Id Accepted";
+                    }, 100)
+                    setTimeout(() => {
+                        document.getElementById('emailError').innerHTML = "*";
+                    }, 1000);
                 }
             }
         };
 
-         
-        
+
+
 
     </script>
 </body>
